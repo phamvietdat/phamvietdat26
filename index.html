@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LuyệnThi24h - Ôn thi THPT Quốc Gia-Tổ Hợp A00</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#fdf2f8;
+}
+
+/* NAV */
+nav{
+    background: linear-gradient(90deg, #fbcfe8, #ddd6fe, #bae6fd);
+    padding:15px 0;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+}
+
+.nav-left{
+    position:absolute;
+    left:40px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.logo{
+    width:55px;
+}
+
+.brand-text h2{
+    margin:0;
+    font-size:20px;
+    color:#4c1d95;
+}
+
+.brand-text p{
+    margin:0;
+    font-size:12px;
+    color:#6b21a8;
+}
+
+.nav-center{
+    display:flex;
+    gap:50px;
+}
+
+nav a{
+    color:#4c1d95;
+    text-decoration:none;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+nav a:hover{
+    color:#db2777;
+}
+
+/* CONTAINER */
+.container{
+    padding:40px;
+    text-align:center;
+    animation: fade 0.4s ease-in-out;
+}
+
+.hidden{
+    display:none;
+}
+
+/* CARD */
+.card{
+    background:white;
+    padding:20px;
+    margin:15px;
+    border-radius:15px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.06);
+    display:inline-block;
+    width:200px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    background:#fce7f3;
+}
+
+/* BOX */
+.box{
+    background:white;
+    max-width:800px;
+    margin:20px auto;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.06);
+    text-align:left;
+}
+
+.section-title{
+    color:#7c3aed;
+}
+
+ul{
+    line-height:1.8;
+}
+
+button{
+    padding:8px 15px;
+    background:#c4b5fd;
+    color:#4c1d95;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#a78bfa;
+}
+
+/* STRUCTURE PAGE */
+.structure-title{
+    color:#6b21a8;
+}
+
+/* FOOTER */
+footer{
+    background: linear-gradient(90deg, #fbcfe8, #ddd6fe, #bae6fd);
+    color:#4c1d95;
+    padding:20px;
+    margin-top:350px;
+}
+
+@keyframes fade{
+    from{opacity:0;}
+    to{opacity:1;}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="nav-left">
+        <img src="logo.png" class="logo">
+        <div class="brand-text">
+            <h2>LuyệnThi24h</h2>
+            <p>Ôn thi THPT Quốc Gia - Tổ hợp A00</p>
+        </div>
+    </div>
+
+    <div class="nav-center">
+        <a onclick="goHome()">Trang chủ</a>
+        <a onclick="showStructure()">Cấu trúc đề</a>
+    </div>
+</nav>
+
+<!-- HOME -->
+<div id="homePage" class="container">
+<h2 style="color:#7c3aed;">Chọn môn học</h2>
+
+<div class="card" onclick="showSubject('Toán')">📘 Toán</div>
+<div class="card" onclick="showSubject('Ngữ Văn')">📖 Ngữ Văn</div>
+<div class="card" onclick="showSubject('Vật Lý')">🔬 Vật Lý</div>
+<div class="card" onclick="showSubject('Hóa Học')">🧪 Hóa Học</div>
+</div>
+
+<!-- SUBJECT -->
+<div id="subjectPage" class="container hidden">
+<h2 id="subjectTitle" style="color:#7c3aed;"></h2>
+
+<div class="box">
+<h3 class="section-title">📚 Kiến thức trọng tâm</h3>
+<ul id="subjectContent"></ul>
+</div>
+
+<div class="box">
+<h3 class="section-title">📄 File đề ôn tập(có đáp án&hướng dẫn giải)</h3>
+<ul id="subjectFiles"></ul>
+</div>
+
+<button onclick="goHome()">⬅ Quay lại Trang chủ</button>
+</div>
+
+<!-- STRUCTURE -->
+<div id="structurePage" class="container hidden">
+<h2 class="structure-title">Cấu trúc đề thi THPT Quốc Gia</h2>
+
+<div class="box">
+<h3 class="section-title">📑 Cấu trúc từng môn</h3>
+<ul>
+<li>Toán, Lý, Hóa: 12 câu trắc nghiệm - 4 câu đúng/sai - 6 câu trả lời ngắn</li>
+<li>Ngữ Văn: Đọc hiểu (5 câu) + Viết văn nghị luận xã hội và văn học(2 câu)</li>
+</ul>
+</div>
+<div class="box">
+<h3 class="section-title">🧮 Cách tính điểm</h3>
+<ul>
+<h4> Đối với Toán,Lý,Hóa</h4>
+<li>12 câu trắc nghiệm,mỗi câu được 0.25=>12 câu 3 điểm.</li>
+<li>4 câu đúng sai.Mỗi câu 4 ý,đúng 1 ý được 0.1 , 2 ý được 0.25 , 3 ý được 0.5 , 4 ý được 1 điểm=> 4 câu 4 điểm.</li>
+<li>6 câu trả lời ngắn,mỗi câu được 0.5 điểm => 6 câu 3 điểm.</li>
+<h4>Đối với Ngữ Văn</h4>
+<li>Phần 1 Đọc hiểu,5 câu 4 điểm.
+<li>Phần 2 Viết,2 câu 6 điểm.
+</ul>
+</div>
+<div class="box">
+<h3 class="section-title">⏰ Thời gian làm bài</h3>
+<ul>
+<li>Toán:90 phút</li>
+<li>Ngữ Văn:120 phút</li>
+<li>Lý,Hóa 50 phút/môn</li>
+</ul>
+</div>
+
+<button onclick="goHome()">⬅ Quay lại Trang chủ</button>
+</div>
+
+<script>
+function goHome(){
+    homePage.classList.remove("hidden");
+    subjectPage.classList.add("hidden");
+    structurePage.classList.add("hidden");
+}
+
+function showStructure(){
+    homePage.classList.add("hidden");
+    subjectPage.classList.add("hidden");
+    structurePage.classList.remove("hidden");
+}
+
+function showSubject(subject){
+    homePage.classList.add("hidden");
+    structurePage.classList.add("hidden");
+    subjectPage.classList.remove("hidden");
+
+    subjectTitle.innerHTML = "Môn " + subject;
+
+    let content="";
+    let files="";
+
+    if(subject==="Toán"){
+    content=`
+    <li>Giá trị lớn nhất,nhỏ nhất,đường tiệm cận,đồ thị hàm số</li>
+    <li>Đạo hàm-Ứng dụng của đạo hàm</li>
+    <li>Hàm số Lũy Thừa,Mũ,Logarit</li>
+    <li>Nguyên Hàm-Tích Phân</li>
+    <li>Hình học không gian Oxyz</li>
+    <li>Phương trình mặt phẳng,phương trình đường thẳng,phương trình mặt cầu,công thức tính góc</li>
+    <li>Xác suất - Thống kê</li>
+    <p><a href="https://drive.google.com/file/d/1w6A_zhz-gTtACNjrR-CRe3BdF8l3Msjy/preview" target="_blank">📄 Lý thuyết toán 10,11,12</a></p>`;
+
+    files=`
+    <li><a href="https://drive.google.com/file/d/1dszkkW4zU_87aeOCrbo5IJBZMOv1SYn9/preview" target="_blank">📄 Đề trường THPT chuyên Bắc Ninh</a></li>
+    <li><a href="https://drive.google.com/file/d/1ipRvQ4ifePTnnGPUE971xtIidrIcI8wf/preview" target="_blank">📄 Đề trường THPT Đào Duy Từ</a></li>
+    <li><a href="https://drive.google.com/file/d/1arSSm4rETc1IJKmxUT5Zf60WBF9_Gdr-/preview" target="_blank">📄 Đề cụm trường QV1-TT1-LVT Bắc Ninh</a></li>
+    <li><a href="https://drive.google.com/file/d/1el6nlth2SH9rEpDzAIXx0J2m1mlWm2Kk/preview" target="_blank">📄 Đề liên cấp đại học Hồng Đức</a></li>
+    <li><a href="https://drive.google.com/file/d/1zgxtVdOuMxFpu90DSRM7DYKowuQ5QBGJ/preview" target="_blank">📄 Đề trường THPT Nguyễn Khuyến-Lê Thánh Tông</a></li>
+    <li><a href="https://drive.google.com/file/d/1nvbLgk31PkGoiRAOhoRW5N4je87rlCo0/preview" target="_blank">📄 Đề trường THPT An Dương-Hải Phòng</a></li>
+    <li><a href="https://drive.google.com/file/d/1mOoSm7f6y8K5Acf8UQkxW8Ay4mo8D_3e/preview" target="_blank">📄 Đề liên trường THPT Nguyễn Viết Xuân-Phú Thọ</a></li>
+    <li><a href="https://drive.google.com/file/d/1h7m5Gm9d2oEKQ93js7TS7zGGfq7o5aEg/preview" target="_blank">📄 Đề cụm liên trường Nghệ An</a></li>
+    <li><a href="https://drive.google.com/file/d/1otE78I0bjACmDXlKnH7FP2aoMIWN-Qug/preview" target="_blank">📄 Đề trường THPT Yên Mô B-Ninh Bình</a></li>
+    <li><a href="https://drive.google.com/file/d/1D5BrhT83z-r7_l5rKKa9trCw0Ghvexc7/preview" target="_blank">📄 Đề trường THPT Nguyễn Khuyến-Bình Dương</a></li>
+    <li><a href="https://drive.google.com/file/d/19wm76sEtGCGQeKR-y4w9Q0c4fT-7Mpqv/preview" target="_blank">📄 Đề trường THCS-THPT NguyễN Khuyến-TP Hồ Chí Minh</a></li>
+    `;
+    }
+
+    if(subject==="Ngữ Văn"){   
+    content=`
+        <h3>Phần I Đọc Hiểu(4 điểm)</h3>
+        <li>Kiến thức nền: Nắm chắc đặc điểm các thể loại: Truyện ngắn, Thơ trữ tình, Kí, Kịch.</li>
+        <li>Kỹ năng: Nhận diện và nêu tác dụng của các biện pháp tu từ (ẩn dụ, nhân hóa, liệt kê...), xác định phương thức biểu đạt, phong cách ngôn ngữ, nội dung chính của văn bản.</li>
+        <li>Lưu ý: Trả lời ngắn gọn, trực tiếp, không lan man.</li>
+        <h3>Phần II Nghị luận xã hội(2 điểm)</h3>
+        <li>Đề tài:Thơ,Truyện,Kí/Tùy bút,Kịch.</li>
+        <h4>Kĩ năng cần ôn</h4>
+        <li>Lập dàn ý chi tiết: Luận điểm rõ ràng, mạch lạc.</li>
+        <li>Phân tích thơ: Tránh lỗi "diễn xuôi thơ", chú ý nghệ thuật, từ ngữ, hình ảnh.</li>
+        <li>Phân tích văn xuôi: Nắm vững nhân vật, tình huống truyện, ngôn ngữ nghệ thuật.</li>
+        <li>Học thuộc dẫn chứng cốt lõi, các nhận định văn học hay để nâng cao chất lượng bài viết.</li>
+        <h3>Nghị luận xã hội</h3>
+        <li>Dạng bài: Thường là đoạn văn 200 chữ về tư tưởng đạo lý hoặc hiện tượng đời sống.</li>
+        <li>Nội dung: Cập nhật các vấn đề thời sự, xã hội nổi bật. Rèn luyện tư duy phản biện (trái chiều, mở rộng vấn đề).</li>
+        <li>Cấu trúc: Mở đoạn (nêu vấn đề) -> Thân đoạn (giải thích, phân tích, dẫn chứng, bình luận) -> Kết đoạn (bài học).</li>
+        <li>Lưu ý: Dẫn chứng cần cụ thể, tiêu biểu, tránh dẫn chứng chung chung.</li>
+        <h3>Kĩ năng và lưu ý trước khi làm bài</h3>
+        <li>Trình bày: Chữ viết rõ ràng, không tẩy xóa, tuân thủ cấu trúc câu, đoạn.</li>
+        <li>Thời gian: Phân bổ hợp lý (đọc hiểu 15-20p, NLVH 20-25p, NLXH 70-80p).</li>
+        <li>Tư duy: Không học vẹt văn mẫu, nắm chắc kiến thức cơ bản và phát huy dấu ấn cá nhân. </li>
+        <li>Chú ý:Nghị luận văn học 2 điểm và nghị luận xã hội 4 điểm nhưng có thể đổi cho nhau.</li>
+        <p><a href="https://drive.google.com/file/d/1ho2_YmABf9iicKFO6pmZ3uQy9Wd3-tlD/preview" target="_blank">📄 Lý thuyết ôn tập Ngữ văn THPTQG</a></p>`;
+
+
+    files=`
+        <li><a href="https://drive.google.com/file/d/1oUiYRTeR8ZNuycMyCGiMnOTrf-5p_ygV/preview" target="_blank">📄Đề thi thử TN Yên Bái</a></li>
+        <li><a href="https://drive.google.com/file/d/1vNBN7hfvr1UeBLOsrohsMx0POzofmTyL/preview" target="_blank">📄Đề thi tham khảo Bộ Giáo Dục và Đào Tạo</a></li>
+        <li><a href="https://drive.google.com/file/d/1qoOadCZG8MJ743m4J-M-MH6b_OwvvOfo/preview" target="_blank">📄Đề thi thử TN Ninh Bình</a></li>
+        <li><a href="https://drive.google.com/file/d/1G0tUWQ2CYLuttrmw978K2D53Hpil2_-t/preview" target="_blank">📄Đề thi thử TN Trường THPT Kiến An-Hải Phòng</a></li>
+        <li><a href="https://drive.google.com/file/d/1QyC9Sh_WtFmu7krWuv3W8En8Qj4WNnqm/preview" target="_blank">📄Đề thi thử TN Liên Trường THPT-Nghệ An</a></li>
+        <li><a href="https://drive.google.com/file/d/1RgMoJZZSSKOJEsiWOxs0YBvUXHn6kpdC/preview" target="_blank">📄Đề thi thử TN Trường THPT Hàm Rồng</a></li>
+        <li><a href="https://drive.google.com/file/d/11RyDuqL0DJmYnhiPXqikWyUpbVMw0hpJ/preview" target="_blank">📄Đề thi thử TN Trường THPT Nguyễn Thị Giang-Vĩnh Phúc</a></li>
+        <li><a href="https://drive.google.com/file/d/1SPxnZYYGeUTBvxnqZitwWqNOwKTdAKUo/preview" target="_blank">📄Đề thi thử TN Tỉnh Bắc Ninh</a></li>`;
+    }
+
+    if(subject==="Vật Lý"){
+        content=`
+        <h3>Kiến thức trọng tâm cần ôn</h3>
+        <li>Vật lý nhiệt: Tìm hiểu sâu về trạng thái chất (rắn, lỏng, khí), sự chuyển thể, và các định luật nhiệt động lực học ứng dụng.</li>
+        <li>Điện từ trường: Nắm vững các hiện tượng điện và từ, đặc biệt là các bài tập đồ thị liên quan.</li>
+        <li>Chương trình Vật lý 12: Hệ thống lại kiến thức 9 chương trong sách giáo khoa mới, bám sát các dạng bài tập trắc nghiệm cơ bản đến nâng cao.</li>
+        <li>Kỹ năng giải đề: Rèn luyện tư duy logich, kỹ năng đọc đồ thị và xử lý các bài tập thực tế.</li>
+        <p><a href="https://drive.google.com/file/d/1Hvl4OGcErNnN3YDTl4vulQqedeHxd5PQ/preview" target="_blank">📄 Lý thuyết ôn tập Vât lý THPTQG</a></p>`;
+
+
+
+        files=`
+        <li><a href="https://drive.google.com/file/d/1UZbCIDORB8o14rXeauXYNYA8HIakuE3V/preview" target="_blank">📄Đề thi thử liên trường THPT Bắc Ninh</a></li>
+        <li><a href="https://drive.google.com/file/d/1nlt7GrlIH_MULWV3taDFRKZ0xvZPfM71/preview" target="_blank">📄Đề thi thử trường Quế Võ 1-Bắc Ninh</a></li>
+        <li><a href="https://drive.google.com/file/d/1RpDMKQePGaBt9dUBeay5b5HKgJs96XUl/preview" target="_blank">📄Đề minh họa trường THPT Lê Thánh Tông-Hồ Chí Minh</a></li>
+        <li><a href="https://drive.google.com/file/d/1H89PsbcKaN4mDXzYl8vWd1WbqjL34bYV/preview" target="_blank">📄Đề minh họa trường Nguyễn Khuyến-Lê Thánh Tông-Hồ Chí Minh</a></li>
+        <li><a href="https://drive.google.com/file/d/1lEBE2M9EVuqDHLa47aRy2PxSZcMz3es2/preview" target="_blank">📄Đề minh họa trường Ngô Gia Tự-Phú Thọ</a></li>
+        <li><a href="https://drive.google.com/file/d/1H-UnBKxHWRveDwVNZWl-cbytX_p2ZweL/preview" target="_blank">📄Đề minh họa sở Bắc Ninh-Cụm Bắc Ninh</a></li>
+        <li><a href="https://drive.google.com/file/d/1XSwSbZZIJuiZs-D116inEB4aU4QW6SgS/preview" target="_blank">📄Đề minh họa trường chuyên KHTN-Hà Nội</a></li>
+        <li><a href="https://drive.google.com/file/d/1M_eC4ZW3wZhyMM4512C9bxJc1tTsfkfE/preview" target="_blank">📄Đề minh họa sở Ninh Bình</a></li>
+        <li><a href="https://drive.google.com/file/d/1oUmIpqoyc5WYkOBSBVi_hrs1KHF7-b6d/preview" target="_blank">📄Đề minh họa liên trường THPT Nghệ An</a></li>
+        `;
+    }
+
+    if(subject==="Hóa Học"){
+        content=`
+        <h3>Kiến thức trọng tâm cần ôn</h3>    
+        <p>Hóa Hữa Cơ</p>
+        <li>Este - Lipit: Nắm chắc lý thuyết, phản ứng xà phòng hóa, bài tập tính toán đốt cháy, este hóa.</li>
+        <li>Carbohydrat (Cacbohidrat): Tính chất của Glucose, Fructose, Saccharose, Tinh bột, Xenlulozo (phản ứng tráng bạc, thủy phân).</li>
+        <li>Amin, Amino axit, Protein: Tính lưỡng tính, cấu tạo, phản ứng peptit.</li>
+        <li>Polime và vật liệu polime: Phân loại, phương pháp điều chế.</li>
+        <p>Hóa Vô Cơ</p>
+        <li>Đại cương kim loại: Dãy điện hóa, ăn mòn kim loại, các dạng bài tập điện phân, nhiệt luyện, thủy luyện.</li>
+        <li>Pin và Điện phân</li>
+        <li>Đại cương về kim loại:Cấu tạo,tính chất,các phương pháp tách kim loại</li>
+        <li>Nguyên tố nhóm IA và IIA</li>
+        <li>Dãy kim loại chuyển tiếp thứ nhất,phức chất,tính chất và ứng dụng</li>
+        <p><a href="https://drive.google.com/file/d/1_aYN1GhGh1szjIkDij8Aa9CxThODwh8r/preview" target="_blank">📄 Lý thuyết ôn tập Hóa Học THPTQG</a></p>
+
+        `;
+
+        files=`
+        <li><a href="https://drive.google.com/file/d/1O0j6Cwpf7nrNjbgzxGD9f04GYRe5SVHl/preview" target="_blank">📄Đề minh họa trường THPT Luơng Tài số 2-Bắc Ninh</a></li>
+        <li><a href="https://drive.google.com/file/d/1RL9flxt0MM3zYEbIWjqqYsgxf5H-385t/preview" target="_blank">📄Đề minh họa trường THPT chuyên Bắc Ninh</a></li>
+        <li><a href="https://drive.google.com/file/d/14ZGw_4pJPEDyIhR3gzKAOYkhc8ntactx/preview" target="_blank">📄Đề minh họa trường THPT Đồng Đậu-Phú Thọ</a></li>
+        <li><a href="https://drive.google.com/file/d/1C5fcnP0lNkkA4-MqJZotMW-5vUT5Z5HX/preview" target="_blank">📄Đề minh họa cụm liên trường THPT QV1-TT1-LVT Bắc Ninh</a></li>
+        <li><a href="https://drive.google.com/file/d/1BbH69yKmcqHROw91sIyky2lLBWa9AWvr/preview" target="_blank">📄Đề minh họa cụm trường THPT Hiệp Hòa-Ngố Sĩ Liên-Tiên Du</a></li>
+        <li><a href="https://drive.google.com/file/d/1ouLElkS2uShQzjJG-PwCkuXwB1Ywr4RO/preview" target="_blank">📄Đề minh họa trường THPT Hàn Thuyên Bắc Ninh</a></li>
+        <li><a href="https://drive.google.com/file/d/1gY1As0z7me_MraOXcJ6s0atZeH0YNGbY/preview" target="_blank">📄Đề minh họa trường liên trường THPT tỉnh Nghệ An</a></li>
+        <li><a href="https://drive.google.com/file/d/1YzdptbSobJVKdZDwoOppH30k1-q0ymn0/preview" target="_blank">📄Đề minh họa tỉnh Ninh Bình</a></li>
+        <li><a href="https://drive.google.com/file/d/1OpBhXJ7TKAbbVqjyCaOzvVfI2P6sLqOi/preview" target="_blank">📄Đề minh họa trường THPT Nguyễn Thị Giang-Phú Thọ</a></li>
+        <li><a href="https://drive.google.com/file/d/1uhEGZ04QSTk_8J3cjxrUDioxDWu7zAkU/preview" target="_blank">📄Đề minh họa trường THP Hưng Nhân tỉnh Hưng Yên</a></li>
+
+        `;
+    }
+
+    subjectContent.innerHTML=content;
+    subjectFiles.innerHTML=files;
+}
+</script>
+
+<footer>
+<h6>© 2026 Website ôn thi THPT Quốc Gia</h6>
+<h6>Liên hệ email:phamvietdat2612@gmail.com</h6>
+<h6>Thuộc sở hữu bởi nhóm 5-lớp 12/3-trường THPT Ông Ích Khiêm</h6>
+<h6>Các nguồn tham khảo:tailieuonthi.org,scribd.com</h6>
+</footer>
+</body>
+</html>
